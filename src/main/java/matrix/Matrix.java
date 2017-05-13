@@ -56,11 +56,11 @@ public class Matrix<T> {
         temp.m = this.m;
         temp.data = new ArrayList<ArrayList<T>>(this.data);
 
-        for(ArrayList<T> vector : this.data) {
+        for(ArrayList<T> row : this.data) {
 
             ListIterator<ArrayList<T>> tempIt = temp.data.listIterator();
 
-            for(T element : vector) {
+            for(T element : row) {
 
                 // TODO FIX THIS SHIT
                 tempIt.next().add(element);
@@ -81,12 +81,12 @@ public class Matrix<T> {
 
         String asString = "[";
 
-        for(ArrayList<T> vector : data) {
+        for(ArrayList<T> row : data) {
 
             asString += "[";
             boolean firstElement = true;
 
-            for(T element : vector) {
+            for(T element : row) {
 
                 if(!firstElement) asString += ",";
                 asString += element.toString();
