@@ -79,6 +79,7 @@ public class Matrix<T> {
     @Override
     public String toString() {
 
+        int i = 1;
         String asString = "[";
 
         for(ArrayList<T> row : data) {
@@ -93,7 +94,11 @@ public class Matrix<T> {
                 firstElement = false;
             }
 
-            asString += "]";
+            if(i++ == this.m) {
+                asString += "]";
+            } else {
+                asString += "],";
+            }
         }
 
         asString += "]";
