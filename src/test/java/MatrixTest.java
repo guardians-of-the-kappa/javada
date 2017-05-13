@@ -22,8 +22,8 @@ public class MatrixTest extends TestCase {
 
     public void testToString() throws Exception {
 
-        String matrix1AsString = "[[1,2,3][1,2,3][1,2,3]]";
-        String matrix2AsString = "[[1,1,1][2,2,2][3,3,3]]";
+        String matrix1AsString = "[[1,2,3],[1,2,3],[1,2,3]]";
+        String matrix2AsString = "[[1,1,1],[2,2,2],[3,3,3]]";
 
         ArrayList<ArrayList<Integer>> data1 = new ArrayList<ArrayList<Integer>>();
         Integer[] arr1 = {1, 2, 3};
