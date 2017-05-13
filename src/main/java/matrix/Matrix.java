@@ -1,13 +1,14 @@
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 /**
- * Matrix.
+ * Matrix of dimensions m x n.
  * @param <T> Contained type.
  */
 public class Matrix<T> {
 
-    private final int m;
-    private final int n;
+    private int m;
+    private int n;
     private ArrayList<ArrayList<T>> data;
 
     /**
@@ -30,6 +31,7 @@ public class Matrix<T> {
 
         this.m = m;
         this.n = n;
+        this.data = new ArrayList<ArrayList<T>>();
 
     }
 
@@ -45,22 +47,58 @@ public class Matrix<T> {
 
     }
 
-    public Matrix transpose() {
+    public Matrix<T> transpose() throws UnsupportedOperationException{
 
-        return new Matrix();
+        if(this.n != this.m) throw new UnsupportedOperationException("CURRENTLY ONLY WORKS FOR SQUAREMATRICES");
 
+        Matrix<T> temp = new Matrix<T>();
+        temp.n = this.n;
+        temp.m = this.m;
+        temp.data = new ArrayList<ArrayList<T>>(this.data);
+
+        for(ArrayList<T> vector : this.data) {
+
+            ListIterator<ArrayList<T>> tempIt = temp.data.listIterator();
+
+            for(T element : vector) {
+
+                // TODO FIX THIS SHIT
+                tempIt.next().add(element);
+            }
+        }
+
+        return temp;
     }
 
-    public Matrix sort(int axis, boolean reverse, boolean inplace, String method) {
+    public Matrix<T> sort(int axis, boolean reverse, boolean inplace, String method) {
 
-        return new Matrix();
+        return new Matrix<T>();
 
     }
 
     @Override
     public String toString() {
 
-        return "TODO";
+        String asString = "[";
+
+        for(ArrayList<T> vector : data) {
+
+            asString += "[";
+            boolean firstElement = true;
+
+            for(T element : vector) {
+
+                if(!firstElement) asString += ",";
+                asString += element.toString();
+                firstElement = false;
+            }
+
+            asString += "]";
+        }
+
+        asString += "]";
+
+        return asString;
 
     }
 }
